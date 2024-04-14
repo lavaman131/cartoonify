@@ -1,1 +1,1 @@
-# cartoonify
+# Cartoonify

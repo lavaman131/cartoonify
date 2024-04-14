@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "cartoonify"
+version = "0.0.1"
+description = "Use stable diffusion to convert images of yourself to cartoons!"
+authors = ["lavaman131 <lavaalex3@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "cartoonify", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+diffusers = {extras = ["torch"], version = "^0.27.2"}
+transformers = "^4.39.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
