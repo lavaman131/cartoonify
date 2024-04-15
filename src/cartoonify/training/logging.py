@@ -5,7 +5,6 @@ import numpy as np
 from omegaconf import DictConfig
 import torch
 import torch.utils.checkpoint
-from transformers import CLIPTextModel, CLIPTokenizer
 from accelerate import Accelerator
 from PIL import Image
 
