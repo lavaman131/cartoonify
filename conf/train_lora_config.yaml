@@ -46,7 +46,7 @@ hub_model_id: null
 logging_dir: logs
 allow_tf32: false
 report_to: wandb
-mixed_precision: null
+mixed_precision: no
 prior_generation_precision: null
 local_rank: -1
 enable_xformers_memory_efficient_attention: false
