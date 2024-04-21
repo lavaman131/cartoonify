@@ -6,7 +6,7 @@ instance_data_dir: null
 class_data_dir: null
 instance_prompt: disney style
 class_prompt: cartoon style
-validation_prompt: null
+validation_prompt: disney style
 num_validation_images: 4
 validation_epochs: 50
 with_prior_preservation: true
