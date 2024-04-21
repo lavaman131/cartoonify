@@ -4,8 +4,8 @@ variant: null
 tokenizer_name: null
 instance_data_dir: null
 class_data_dir: null
-instance_prompt: cartoon style
-class_prompt: realistic style
+instance_prompt: disney style
+class_prompt: cartoon style
 validation_prompt: null
 num_validation_images: 4
 validation_epochs: 50
