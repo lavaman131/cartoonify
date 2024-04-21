@@ -9,7 +9,7 @@ class_prompt: cartoon style
 validation_prompt: null
 num_validation_images: 4
 validation_epochs: 50
-with_prior_preservation: false
+with_prior_preservation: true
 prior_loss_weight: 1.0
 num_class_images: 100
 output_dir: lora-dreambooth-model
