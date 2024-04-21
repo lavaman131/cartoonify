@@ -1,3 +1,13 @@
+# data
+disney_images
+
+# logging
+wandb
+outputs
+
+# model files
+lora-dreambooth-model
+
 # System Files
 .DS_Store
 

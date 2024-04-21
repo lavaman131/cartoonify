@@ -10,7 +10,7 @@ def get_parser() -> ArgumentParser:
 def main() -> None:
     parser = get_parser()
     args = parser.parse_args()
-    dataset = load_dataset("imagefolder", data_dir=args.data_dir) 
+    dataset = load_dataset("./disney_images", data_dir=args.data_dir) 
     dataset.push_to_hub(args.repo_id)
 
 

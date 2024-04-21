@@ -1,6 +1,6 @@
 from pathlib import Path
 import hydra
-from omegaconf import DictConfig
+from omegaconf import DictConfig, OmegaConf
 from accelerate import Accelerator
 from accelerate.utils import ProjectConfiguration
 import torch
@@ -59,7 +59,7 @@ from cartoonify.training.utils import (
 )
 
 if is_wandb_available():
-    pass
+    import wandb
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.28.0.dev0")
@@ -67,7 +67,7 @@ check_min_version("0.28.0.dev0")
 logger = get_logger(__name__)
 
 
-@hydra.main(config_path="../conf/train_lora_config.yaml")
+@hydra.main(version_base=None, config_path="../conf", config_name="train_lora_config")
 def main(cfg: DictConfig):
     if cfg.report_to == "wandb" and cfg.hub_token is not None:
         raise ValueError(
@@ -556,7 +556,7 @@ def main(cfg: DictConfig):
     # We need to initialize the trackers we use, and also store our configuration.
     # The trackers initializes automatically on the main process.
     if accelerator.is_main_process:
-        tracker_config = vars(copy.deepcopy(cfg))
+        tracker_config = copy.deepcopy(OmegaConf.to_container(cfg))
         tracker_config.pop("validation_images")
         accelerator.init_trackers("dreambooth-lora", config=tracker_config)
 
@@ -877,3 +877,7 @@ def main(cfg: DictConfig):
             )
 
     accelerator.end_training()
+
+if __name__ == "__main__":
+    main()
+    

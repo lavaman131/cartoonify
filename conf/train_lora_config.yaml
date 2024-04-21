@@ -2,11 +2,11 @@ pretrained_model_name_or_path: stabilityai/stable-diffusion-2-1-base
 revision: null
 variant: null
 tokenizer_name: null
-instance_data_dir: ./disney_style
-class_data_dir: null
-instance_prompt: disney style
-class_prompt: cartoon style
-validation_prompt: disney style
+instance_data_dir: /data/disney_images
+class_data_dir: /data/disney_style/class_data
+instance_prompt: "disney style"
+class_prompt: "cartoon style"
+validation_prompt: "disney style"
 num_validation_images: 4
 validation_epochs: 50
 validation_steps: 100
@@ -46,7 +46,7 @@ hub_model_id: null
 logging_dir: logs
 allow_tf32: false
 report_to: wandb
-mixed_precision: no
+mixed_precision: "no"
 prior_generation_precision: null
 local_rank: -1
 enable_xformers_memory_efficient_attention: false
