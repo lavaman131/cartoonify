@@ -29,7 +29,7 @@ gradient_checkpointing: false
 learning_rate: 1e-4
 scale_lr: false
 lr_scheduler: constant
-lr_warmup_steps: 500
+lr_warmup_steps: 0
 lr_num_cycles: 1
 lr_power: 1.0
 dataloader_num_workers: 0
