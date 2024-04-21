@@ -1,11 +1,11 @@
-pretrained_model_name_or_path: ???
+pretrained_model_name_or_path: stabilityai/stable-diffusion-2-1-base
 revision: null
 variant: null
 tokenizer_name: null
-instance_data_dir: ???
+instance_data_dir: null
 class_data_dir: null
-instance_prompt: ???
-class_prompt: null
+instance_prompt: cartoon style
+class_prompt: realistic style
 validation_prompt: null
 num_validation_images: 4
 validation_epochs: 50
@@ -16,17 +16,17 @@ output_dir: lora-dreambooth-model
 seed: 42
 resolution: 512
 center_crop: false
-train_text_encoder: false
-train_batch_size: 4
-sample_batch_size: 4
+train_text_encoder: true
+train_batch_size: 2
+sample_batch_size: 2
 num_train_epochs: 1
-max_train_steps: null
+max_train_steps: 10000
 checkpointing_steps: 500
 checkpoints_total_limit: null
 resume_from_checkpoint: null
 gradient_accumulation_steps: 1
 gradient_checkpointing: false
-learning_rate: 0.0005
+learning_rate: 1e-4
 scale_lr: false
 lr_scheduler: constant
 lr_warmup_steps: 500
