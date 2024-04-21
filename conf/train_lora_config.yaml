@@ -2,7 +2,7 @@ pretrained_model_name_or_path: stabilityai/stable-diffusion-2-1-base
 revision: null
 variant: null
 tokenizer_name: null
-instance_data_dir: null
+instance_data_dir: ./disney_style
 class_data_dir: null
 instance_prompt: disney style
 class_prompt: cartoon style
