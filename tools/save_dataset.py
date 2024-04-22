@@ -15,7 +15,8 @@ def main() -> None:
     save_dir = Path(args.local_dir)
     save_dir.mkdir(parents=True, exist_ok=True)
     for idx, img in enumerate(tqdm(dataset["image"])):
-        img.save(save_dir / f"{idx}.png")
+        if dataset["label"][idx] == 1: # Character
+            img.save(save_dir / f"{idx}.png")
     
     
 if __name__ == "__main__":
