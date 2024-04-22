@@ -8,6 +8,7 @@ instance_prompt: "photo of disney person"
 class_prompt: "photo of a person"
 validation_prompt: "photo of disney person"
 num_validation_images: 4
+validation_epochs: 1
 validation_steps: 100
 num_inference_steps: 30
 with_prior_preservation: true
@@ -21,10 +22,10 @@ train_text_encoder: true
 train_batch_size: 4
 sample_batch_size: 4
 num_train_epochs: 1
-max_train_steps: 4000
+max_train_steps: 9000
 checkpointing_steps: 500
 checkpoints_total_limit: null
-resume_from_checkpoint: null
+resume_from_checkpoint: lora-dreambooth-model/checkpoint-4000
 gradient_accumulation_steps: 1
 gradient_checkpointing: false
 learning_rate: 5e-4

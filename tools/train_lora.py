@@ -774,7 +774,7 @@ def main(cfg: DictConfig):
                 break
 
         if accelerator.is_main_process:
-            if cfg.validation_prompt is not None and global_step % cfg.validation_steps == 0:
+            if cfg.validation_prompt is not None and epoch % cfg.validation_epochs == 0:
                 # create pipeline
                 pipeline = DiffusionPipeline.from_pretrained(
                     cfg.pretrained_model_name_or_path,
