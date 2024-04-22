@@ -42,6 +42,7 @@ def get_parser() -> ArgumentParser:
         type=str,
         help="The variant of the model.",
     )
+    parser.add_argument("--commit_message", type=str, help="The commit message.")
     return parser
 
 def main() -> None:
@@ -70,7 +71,7 @@ def main() -> None:
     save_model_card(
         repo_id=repo_id,
         repo_folder=args.output_dir,
-        prompt="disney style",
+        prompt=args.instance_prompt,
         base_model=args.pretrained_model_name_or_path,
         images=None,
         train_text_encoder=args.train_text_encoder,
@@ -79,7 +80,7 @@ def main() -> None:
     upload_folder(
         repo_id=repo_id,
         folder_path=args.output_dir,
-        commit_message="10000 steps of training",
+        commit_message=args.commit_message,
         ignore_patterns=["step_*", "epoch_*"],
     )
 
