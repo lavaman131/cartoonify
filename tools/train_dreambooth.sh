@@ -4,6 +4,8 @@ python train_dreambooth.py \
     --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
     --revision="main" \
     --variant="fp16" \
+    --validation_prompt="disney style" \
+    --num_validation_images=4 \
     --instance_data_dir="/data/disney" \
     --class_data_dir="/data/artwork" \
     --instance_prompt="disney style" \
@@ -34,7 +36,7 @@ python train_dreambooth.py \
     --max_grad_norm=1.0 \
     --hub_model_id="cartoonify" \
     --logging_dir="logs" \
-    --validation_steps=1000 \
+    --validation_steps=500 \
     --mixed_precision="fp16" \
     --prior_generation_precision="fp16" \
     --validation_scheduler="PNDMScheduler" \
