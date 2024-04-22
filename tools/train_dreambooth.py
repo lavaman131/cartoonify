@@ -654,7 +654,6 @@ def parse_args(input_args=None):
         "--validation_scheduler",
         type=str,
         default="DPMSolverMultistepScheduler",
-        choices=["DPMSolverMultistepScheduler", "DDPMScheduler"],
         help="Select which scheduler to use for validation. DDPMScheduler is recommended for DeepFloyd IF.",
     )
 
