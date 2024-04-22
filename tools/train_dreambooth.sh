@@ -38,4 +38,5 @@ python train_dreambooth.py \
     --mixed_precision="fp16" \
     --prior_generation_precision="fp16" \
     --snr_gamma=5.0 \
-    --validation_scheduler="PNDMScheduler"
+    --validation_scheduler="PNDMScheduler" \
+    --report_to="wandb"
