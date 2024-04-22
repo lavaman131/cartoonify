@@ -22,6 +22,8 @@ datasets = "^2.18.0"
 wandb = "^0.16.6"
 scipy = "^1.13.0"
 lightning = "^2.2.2"
+gradio = "^4.27.0"
+hf-transfer = "^0.1.6"
 
 
 [build-system]

@@ -2,26 +2,26 @@ pretrained_model_name_or_path: stabilityai/stable-diffusion-2-1-base
 revision: null
 variant: null
 tokenizer_name: null
-instance_data_dir: /data/disney_images
-class_data_dir: /data/disney_style/class_data
+instance_data_dir: /data/disney_style
+class_data_dir: /data/illustration_style
 instance_prompt: "disney style"
-class_prompt: "cartoon style"
-validation_prompt: "disney style"
+class_prompt: "illustration style"
+validation_prompt: "photo of disney style person"
 num_validation_images: 4
-validation_epochs: 50
 validation_steps: 100
+num_inference_steps: 30
 with_prior_preservation: true
 prior_loss_weight: 1.0
-num_class_images: 100
-output_dir: lora-dreambooth-model
-seed: 42
+num_class_images: 1000
+output_dir: lora-dreambooth-model-trial2
+seed: 1337
 resolution: 512
 center_crop: false
 train_text_encoder: true
 train_batch_size: 2
-sample_batch_size: 2
+sample_batch_size: 4
 num_train_epochs: 1
-max_train_steps: 10000
+max_train_steps: 1000
 checkpointing_steps: 500
 checkpoints_total_limit: null
 resume_from_checkpoint: null
@@ -33,8 +33,8 @@ lr_scheduler: constant
 lr_warmup_steps: 0
 lr_num_cycles: 1
 lr_power: 1.0
-dataloader_num_workers: 0
-use_8bit_adam: false
+dataloader_num_workers: 8
+use_8bit_adam: true
 adam_beta1: 0.9
 adam_beta2: 0.999
 adam_weight_decay: 0.01
@@ -46,10 +46,10 @@ hub_model_id: null
 logging_dir: logs
 allow_tf32: false
 report_to: wandb
-mixed_precision: "no"
+mixed_precision: "fp16"
 prior_generation_precision: null
 local_rank: -1
-enable_xformers_memory_efficient_attention: false
+enable_xformers_memory_efficient_attention: true
 pre_compute_text_embeddings: false
 tokenizer_max_length: null
 text_encoder_use_attention_mask: false

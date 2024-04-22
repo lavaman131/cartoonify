@@ -774,7 +774,7 @@ def main(cfg: DictConfig):
                 break
 
         if accelerator.is_main_process:
-            if cfg.validation_prompt is not None and epoch % cfg.validation_epochs == 0:
+            if cfg.validation_prompt is not None and global_step % cfg.validation_steps == 0:
                 # create pipeline
                 pipeline = DiffusionPipeline.from_pretrained(
                     cfg.pretrained_model_name_or_path,
@@ -847,7 +847,7 @@ def main(cfg: DictConfig):
         if cfg.validation_prompt and cfg.num_validation_images > 0:
             pipeline_cfg = {
                 "prompt": cfg.validation_prompt,
-                "num_inference_steps": 25,
+                "num_inference_steps": cfg.num_inference_steps,
             }
             images = log_validation_lora(
                 cfg,
