@@ -17,14 +17,14 @@ ftfy = "^6.2.0"
 tensorboard = "^2.16.2"
 jinja2 = "^3.1.3"
 peft = "0.7.0"
-hydra-core = "^1.3.2"
 datasets = "^2.18.0"
 wandb = "^0.16.6"
 scipy = "^1.13.0"
 lightning = "^2.2.2"
 gradio = "^4.27.0"
 hf-transfer = "^0.1.6"
-bitsandbytes = "^0.43.1"
+# make bitsandbytes optional
+# bitsandbytes = "^0.43.1"
 
 
 [build-system]

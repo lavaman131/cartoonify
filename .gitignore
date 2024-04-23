@@ -1,5 +1,6 @@
 # data
-disney_images
+disney
+disney_processed
 
 # logging
 wandb

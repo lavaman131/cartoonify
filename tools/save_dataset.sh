@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python save_dataset.py --local_dir /data/disney
+python save_dataset.py --local_dir ./disney

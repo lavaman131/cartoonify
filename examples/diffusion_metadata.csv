@@ -1,0 +1,13 @@
+image_name,prompt,negative_prompt,guidance_scale,num_inference_steps,seed
+green_hat_man.png,"a man wearing a green hat, disney style",,8,30,42
+baby_lion.png,disney style (baby lion),person human,8,30,42
+red_ferrari.png,"(red) ferrari sports (car) with beautiful forest in the background, disney style",,8,30,42
+red_ferrari.png,disney style (red) ferrari sports (car) with beautiful forest in the background,,8,30,42
+red_ferrari.png,disney style (red) ferrari sports (car) with beautiful forest in the background,,7,30,42
+legend_of_zelda.png,disney style legend of zelda riding on a brown horse,,7.5,30,42
+legend_of_zelda.png,disney style legend of zelda riding on a brown horse,,7.5,50,42
+legend_of_zelda.png,disney style legend of zelda riding on a brown horse,,8.0,50,42
+legend_of_zelda.png,disney style legend of zelda riding on a brown horse,,8.0,30,42
+baby_lion.png,disney style (baby lion),person human,8,30,42
+baby_lion.png,"ultra realistic close up portrait ((beautiful pale cyberpunk female with heavy black eyeliner)), blue eyes, shaved side haircut, hyper detail, cinematic lighting, magic neon, dark red city, Canon EOS R3, nikon, f/1.4, ISO 200, 1/160s, 8K, RAW, unedited, symmetrical balance, in-frame, 8K","painting, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, deformed, ugly, blurry, bad anatomy, bad proportions, extra limbs, cloned face, skinny, glitchy, double torso, extra arms, extra hands, mangled fingers, missing lips, ugly face, distorted face, extra legs, anime",8,30,42
+baby_lion.png,disney style (baby lion),person human,8,30,42
