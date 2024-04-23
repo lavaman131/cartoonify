@@ -6,21 +6,23 @@ from cartoonify.utils import init_image_to_image_pipeline, predict as _predict
 pipeline = init_image_to_image_pipeline()
 predict = partial(_predict, pipeline)
 
-prompt = gr.Textbox(value="disney style person", label="Prompt (max 77 tokens)")
+prompt = gr.Textbox(
+    value="disney style person, detailed", label="Prompt (max 77 tokens)"
+)
 negative_prompt = gr.Textbox(
-    value="",
+    value="[out of frame], ((noisy))",
     label="Negative prompt (max 77 tokens)",
 )
 
 cfg = gr.Slider(
     minimum=2,
-    maximum=15,
-    value=7.5,
+    maximum=20,
+    value=16,
     step=0.5,
     label="Classifier-free guidance scale (CFG)",
 )
 denoising = gr.Slider(
-    minimum=0.0, maximum=1.0, value=0.75, step=0.05, label="Denoising strength"
+    minimum=0.0, maximum=1.0, value=0.35, step=0.05, label="Denoising strength"
 )
 denoising_steps = gr.Slider(
     minimum=10, maximum=50, value=50, step=1, label="Denoising steps"

@@ -5,6 +5,8 @@ from diffusers import (
     StableDiffusionPipeline,
     StableDiffusionImg2ImgPipeline,
     DiffusionPipeline,
+    PNDMScheduler,
+    EulerAncestralDiscreteScheduler,
 )
 from PIL import Image
 import csv
@@ -38,6 +40,9 @@ def init_text_to_image_pipeline(
     pipeline = StableDiffusionPipeline.from_pretrained(
         repo_id, torch_dtype=torch_dtype
     ).to(device)
+    pipeline.scheduler = EulerAncestralDiscreteScheduler.from_config(
+        pipeline.scheduler.config
+    )
     return pipeline
 
 
@@ -50,6 +55,9 @@ def init_image_to_image_pipeline(
     pipeline = StableDiffusionImg2ImgPipeline.from_pretrained(
         repo_id, torch_dtype=torch_dtype
     ).to(device)
+    pipeline.scheduler = EulerAncestralDiscreteScheduler.from_config(
+        pipeline.scheduler.config
+    )
     return pipeline
 
 
