@@ -1,4 +1,3 @@
-import torch
 import gradio as gr
 from functools import partial
 from PIL import Image
@@ -7,9 +6,7 @@ from cartoonify.utils import init_image_to_image_pipeline, predict as _predict
 pipeline = init_image_to_image_pipeline()
 predict = partial(_predict, pipeline)
 
-prompt = gr.Textbox(
-    value="disney style, beautiful, detailed", label="Prompt (max 77 tokens)"
-)
+prompt = gr.Textbox(value="disney style person", label="Prompt (max 77 tokens)")
 negative_prompt = gr.Textbox(
     value="",
     label="Negative prompt (max 77 tokens)",
@@ -34,7 +31,7 @@ random_seed = gr.Number(42, label="Random seed")
 def generate(
     image, prompt, negative_prompt, random_seed, cfg, denoising, denoising_steps
 ):
-    init_image = Image.open(image).convert("RGB")
+    init_image = Image.open(image).convert("RGB").resize((512, 512))
     image = predict(
         pipeline_config={
             "prompt": prompt,
@@ -43,9 +40,6 @@ def generate(
             "guidance_scale": cfg,
             "strength": denoising,
             "num_inference_steps": denoising_steps,
-            "height": 512,
-            "width": 512,
-            "resize_mode": "fill",
         },
         seed=random_seed,
     )[0]

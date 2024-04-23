@@ -1,7 +1,6 @@
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple, TypeAlias, Union
 import torch
-import gradio as gr
 from diffusers import (
     StableDiffusionPipeline,
     StableDiffusionImg2ImgPipeline,
