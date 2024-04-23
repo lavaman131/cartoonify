@@ -2,7 +2,7 @@
 
 This is a dreambooth model derived from `runwayml/stable-diffusion-v1-5` with additional fine-tuning of the text encoder. The weights were trained from a popular animation studio using [DreamBooth](https://dreambooth.github.io/). The fine-tuned model weights can be found [here](https://huggingface.co/lavaman131/cartoonify). Use the tokens **_disney style_** in your prompts for the effect.
 
-You can find some example images below:
+You can find some example images below for text-to-image translation using the model:
 
 <p float="left">
     <img width=256 height=256 src="./images/king.png">
@@ -10,6 +10,12 @@ You can find some example images below:
     <img width=256 height=256 src="./images/pony.png">
     <img width=256 height=256 src="./images/princess.png">
     <img width=256 height=256 src="./images/red_ferrari.png">
+</p>
+
+And image-to-image translation using the model:
+
+<p float="left">
+    <img width=1024 src="./images/img2img.png">
 </p>
 
 # Getting started
