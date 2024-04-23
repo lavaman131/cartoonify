@@ -26,7 +26,7 @@ def predict(
     seed: Optional[int] = 42,
 ) -> DiffusionOutput:
     device = torch.device(device) if isinstance(device, str) else device
-    repo_id = "stablediffusionapi/disney-pixar-cartoon"
+    repo_id = "lavaman131/cartoonify"
     pipeline = StableDiffusionPipeline.from_pretrained(
         repo_id, torch_dtype=torch.float16
     ).to(device)
