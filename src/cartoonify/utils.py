@@ -7,6 +7,8 @@ from diffusers import StableDiffusionPipeline
 from PIL import Image
 import csv
 
+import torch.utils
+
 
 @dataclass
 class DiffusionMetadata:
@@ -20,17 +22,39 @@ class DiffusionMetadata:
 DiffusionOutput: TypeAlias = Tuple[Image.Image, DiffusionMetadata]
 
 
+def get_device(device: Optional[Union[str, torch.device]]) -> torch.device:
+    if isinstance(device, str):
+        return torch.device(device)
+    elif isinstance(device, torch.device):
+        return device
+    else:
+        if torch.cuda.is_available():
+            return torch.device("cuda")
+        elif torch.backends.mps.is_available():
+            return torch.device("mps")
+        else:
+            return torch.device("cpu")
+
+
+def init_pipeline(
+    device: Optional[Union[str, torch.device]] = None,
+) -> StableDiffusionPipeline:
+    device = get_device(device)
+    repo_id = "lavaman131/cartoonify"
+    torch_dtype = torch.float16 if device.type in ["mps", "cuda"] else torch.float32
+    pipeline = StableDiffusionPipeline.from_pretrained(
+        repo_id, torch_dtype=torch_dtype
+    ).to(device)
+    return pipeline
+
+
 def predict(
+    pipeline: StableDiffusionPipeline,
     pipeline_config: Dict[str, Any],
-    device: Union[str, torch.device],
+    device: Optional[Union[str, torch.device]] = None,
     seed: Optional[int] = 42,
 ) -> DiffusionOutput:
-    device = torch.device(device) if isinstance(device, str) else device
-    repo_id = "lavaman131/cartoonify"
-    pipeline = StableDiffusionPipeline.from_pretrained(
-        repo_id, torch_dtype=torch.float16
-    ).to(device)
-
+    device = get_device(device)
     # run inference
     if device.type == "cuda":
         with torch.cuda.amp.autocast():
