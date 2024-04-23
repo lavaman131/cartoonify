@@ -1,6 +1,6 @@
 # Cartoonify
 
-This is a dreambooth model derived from `runwayml/stable-diffusion-v1-5` with additional fine-tuning of the text encoder. The weights were trained from a popular animation studio using [DreamBooth](https://dreambooth.github.io/). Use the tokens **_disney style_** in your prompts for the effect.
+This is a dreambooth model derived from `runwayml/stable-diffusion-v1-5` with additional fine-tuning of the text encoder. The weights were trained from a popular animation studio using [DreamBooth](https://dreambooth.github.io/). The fine-tuned model weights can be found [here](https://huggingface.co/lavaman131/cartoonify). Use the tokens **_disney style_** in your prompts for the effect.
 
 You can find some example images below:
 
