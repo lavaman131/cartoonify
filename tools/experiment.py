@@ -1,9 +1,13 @@
 from pathlib import Path
-from cartoonify.utils import init_pipeline, predict as _predict, save_image_and_metadata
+from cartoonify.utils import (
+    init_text_to_image_pipeline,
+    predict as _predict,
+    save_image_and_metadata,
+)
 from functools import partial
 
 if __name__ == "__main__":
-    pipeline = init_pipeline()
+    pipeline = init_text_to_image_pipeline()
     predict = partial(_predict, pipeline)
     image, metadata = predict(
         {

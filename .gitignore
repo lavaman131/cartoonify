@@ -3,6 +3,7 @@ disney
 disney_processed
 resized_disney
 style_ddim
+flagged
 
 # logging
 wandb

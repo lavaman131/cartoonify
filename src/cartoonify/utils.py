@@ -1,25 +1,19 @@
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple, TypeAlias, Union
 import torch
 import gradio as gr
-from diffusers import StableDiffusionPipeline
+from diffusers import (
+    StableDiffusionPipeline,
+    StableDiffusionImg2ImgPipeline,
+    DiffusionPipeline,
+)
 from PIL import Image
 import csv
 
 import torch.utils
 
 
-@dataclass
-class DiffusionMetadata:
-    prompt: str
-    negative_prompt: str
-    guidance_scale: int
-    num_inference_steps: int
-    seed: int
-
-
-DiffusionOutput: TypeAlias = Tuple[Image.Image, DiffusionMetadata]
+DiffusionOutput: TypeAlias = Tuple[Image.Image, Dict[str, Any]]
 
 
 def get_device(device: Optional[Union[str, torch.device]]) -> torch.device:
@@ -36,7 +30,7 @@ def get_device(device: Optional[Union[str, torch.device]]) -> torch.device:
             return torch.device("cpu")
 
 
-def init_pipeline(
+def init_text_to_image_pipeline(
     device: Optional[Union[str, torch.device]] = None,
 ) -> StableDiffusionPipeline:
     device = get_device(device)
@@ -48,8 +42,20 @@ def init_pipeline(
     return pipeline
 
 
+def init_image_to_image_pipeline(
+    device: Optional[Union[str, torch.device]] = None,
+) -> StableDiffusionImg2ImgPipeline:
+    device = get_device(device)
+    repo_id = "lavaman131/cartoonify"
+    torch_dtype = torch.float16 if device.type in ["mps", "cuda"] else torch.float32
+    pipeline = StableDiffusionImg2ImgPipeline.from_pretrained(
+        repo_id, torch_dtype=torch_dtype
+    ).to(device)
+    return pipeline
+
+
 def predict(
-    pipeline: StableDiffusionPipeline,
+    pipeline: DiffusionPipeline,
     pipeline_config: Dict[str, Any],
     device: Optional[Union[str, torch.device]] = None,
     seed: Optional[int] = 42,
@@ -66,15 +72,10 @@ def predict(
 
     image = pipeline(**pipeline_config, generator=generator).images[0]
 
-    metadata_kwargs = {
-        "prompt": pipeline_config["prompt"],
-        "negative_prompt": pipeline_config["negative_prompt"],
-        "guidance_scale": pipeline_config["guidance_scale"],
-        "num_inference_steps": pipeline_config["num_inference_steps"],
+    metadata = {
+        **pipeline_config,
         "seed": seed,
     }
-
-    metadata = DiffusionMetadata(**metadata_kwargs)
 
     return image, metadata
 
@@ -82,7 +83,7 @@ def predict(
 def save_image_and_metadata(
     base_dir: Union[str, Path],
     image: Image.Image,
-    metadata: DiffusionMetadata,
+    metadata: Dict[str, Any],
     save_fname: str,
     write_mode: str = "a",
 ) -> None:
@@ -98,8 +99,8 @@ def save_image_and_metadata(
         # write header if file is empty
         if f.tell() == 0:
             keys = ["image_name"]
-            keys += list(metadata.__dict__.keys())
+            keys += list(metadata.keys())
             csv_writer.writerow(keys)
         values = [save_fname]
-        values += list(metadata.__dict__.values())
+        values += list(metadata.values())
         csv_writer.writerow(values)

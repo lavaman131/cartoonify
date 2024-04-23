@@ -39,6 +39,14 @@ poetry install
 
 # Intended uses & limitations
 
+## Demo
+
+You can try image-to-image translation using the model in an interactive UI by running the following command:
+
+```bash
+python ./demo/app.py
+```
+
 ## How to use
 
 ```python
