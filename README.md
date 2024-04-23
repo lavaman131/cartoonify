@@ -56,7 +56,7 @@ image.save("output.png")
 
 ## Limitations and bias
 
-As with any diffusion model, playing around with the prompt and classifier-free guidance parameter is required until you get the results you want. For additional safety in image generation, we use the Stable Diffusion safety checker.
+As with any diffusion model, playing around with the prompt and classifier-free guidance parameter is required until you get the results you want. Zoomed-out subjects seem to loose clairity in the face. For additional safety in image generation, we use the Stable Diffusion safety checker.
 
 # Data preparation details
 
