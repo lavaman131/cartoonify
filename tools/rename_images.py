@@ -10,7 +10,6 @@ def main() -> None:
     images = list(DATA_DIR.glob("*.png"))
     for idx, img in enumerate(tqdm(images)):
         img = Image.open(img)
-        # crop image to 512x512
         img.save(SAVE_DIR.joinpath(f"{idx}.png"))
 
 
