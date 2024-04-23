@@ -4,12 +4,12 @@ python train_dreambooth.py \
     --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
     --revision="main" \
     --variant="fp16" \
-    --validation_prompt="disney style" \
+    --validation_prompt="a person, disney style" \
     --num_validation_images=4 \
     --instance_data_dir="/data/disney" \
-    --class_data_dir="/data/artwork" \
+    --class_data_dir="/data/style_ddim" \
     --instance_prompt="disney style" \
-    --class_prompt="artwork style" \
+    --class_prompt="style" \
     --with_prior_preservation \
     --num_class_images=1000 \
     --prior_loss_weight=1.0 \
@@ -21,7 +21,7 @@ python train_dreambooth.py \
     --train_batch_size=4 \
     --sample_batch_size=4 \
     --num_train_epochs=1 \
-    --max_train_steps=10000 \
+    --max_train_steps=4000 \
     --checkpointing_steps=500 \
     --gradient_accumulation_steps=1 \
     --learning_rate=1e-6 \
